@@ -1,0 +1,93 @@
+.nav-wrapper{
+	background-color: tomato !important;
+}
+
+.brand-logo{
+	text-align: center !important;
+}
+
+.container{
+	min-height: 610px;
+}
+
+.header{
+	text-align: center;
+}
+
+.panel-footer{
+	text-align: center;
+
+}
+
+.header-tab{
+	text-align: center;
+	background-color: #ec5a3b99;
+	color: #fff;
+	line-height: 50px;
+	font-size: 28px;
+	border: 1px solid #eee;
+	margin: 7px 0px 0px 0px;
+}
+
+.header-tab:hover, .header-tab:focus, .header-tab:active{
+	background-color: tomato;
+}
+
+.active-tab{
+	background-color: tomato;
+}
+
+.add-link{
+	text-align: center;
+}
+
+.disabled {
+	pointer-events: none !important;
+	color: grey;
+}
+
+.list-element{
+	background-color: #f9f9f9;
+}
+
+.list-name{
+	text-align: left;
+	padding-top: .45rem !important;
+}
+
+.list-edit{
+	text-align: center;
+}
+
+.hidden{
+	display: none !important;
+}
+
+img{
+	max-width: 100% !important;
+}
+
+.song-source-logo{
+	height: 80px;
+}
+
+.song-title, .song-duration{
+	padding-left: 4%;
+}
+
+.song-title{
+	margin-top: 1px;
+}
+
+.card{
+	max-width: 90%;
+}
+
+.song_description{
+	margin: 2% !important;
+}
+
+.song_listing{
+	display: block;
+	color: inherit !important;
+}
