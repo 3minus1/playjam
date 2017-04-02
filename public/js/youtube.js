@@ -11,7 +11,8 @@ function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
     events: {
       // call this function when player is ready to use
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      'onStateChange': onStateChange
     }
   });
 }
@@ -32,6 +33,13 @@ function onPlayerReady(event) {
   });
 
   
+}
+
+function onStateChange(event){
+	console.log("State: "+event.data);
+
+	if(event.data == 0)
+		$('#next').click();
 }
 
 
@@ -64,6 +72,13 @@ $(document).ready(function(){
 		$('li').removeClass('active');
 		$('#'+next_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
+		player = new YT.Player('ytplayer', {
+		    events: {
+		      // call this function when player is ready to use
+		      'onReady': onPlayerReady,
+		      'onStateChange': onStateChange
+		    }
+		  });
 
 	});
 
@@ -88,6 +103,13 @@ $(document).ready(function(){
 		$('li').removeClass('active');
 		$('#'+prev_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+prev_song_id).children('span').first().html());
+		player = new YT.Player('ytplayer', {
+		    events: {
+		      // call this function when player is ready to use
+		      'onReady': onPlayerReady,
+		      'onStateChange': onStateChange
+		    }
+		  });
 	});
 
 	$('.song_listing').click(function(){
@@ -100,6 +122,13 @@ $(document).ready(function(){
 		$('li').removeClass('active');
 		$(this).addClass('active');
 		$('#current_song').html("Currently Playing: "+$(this).children('span').first().html());
+		player = new YT.Player('ytplayer', {
+		    events: {
+		      // call this function when player is ready to use
+		      'onReady': onPlayerReady,
+		      'onStateChange': onStateChange
+		    }
+		  });
 		
 		
 	});

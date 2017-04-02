@@ -44,7 +44,8 @@ class PlaylistController extends Controller
     {
     	$playlist = Playlist::where('id',$id)->first();
     	$songs = Song::where('playlist_id',$id)->get();
-    	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs] );
+        $i=1;
+    	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs, 'i'=>$i] );
     }
 
     public function edit($id)
