@@ -55,13 +55,25 @@ $(document).ready(function(){
 		var current_song_id = parseInt($('.active').attr('id'));
 		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
 		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
-		
-		var next_song_id = "";
-		if(current_song_id==last_song_id)
-			next_song_id = first_song_id;
-		else
-			next_song_id = current_song_id+1;
+		var next_song_id = current_song_id;
+		if($('#toggleShuffle').is(":checked") == true)
+		{
+			var idArray = [];
+			for (var i = first_song_id; i <= last_song_id; i++)
+			    idArray.push(i);
 
+			while(next_song_id == current_song_id)
+				next_song_id = idArray[Math.floor(Math.random() * (i-1)) ];
+			
+		}
+		else
+		{
+		
+			if(current_song_id==last_song_id)
+				next_song_id = first_song_id;
+			else
+				next_song_id = current_song_id+1;
+		}	
 		console.log("Current Song ID: "+current_song_id);
 		console.log("First Song ID: "+first_song_id);
 		console.log("Last Song ID: "+last_song_id);
@@ -72,6 +84,7 @@ $(document).ready(function(){
 		$('li').removeClass('active');
 		$('#'+next_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
+
 		player = new YT.Player('ytplayer', {
 		    events: {
 		      // call this function when player is ready to use
@@ -130,7 +143,7 @@ $(document).ready(function(){
 		    }
 		  });
 		
-		
+
 	});
   
   
