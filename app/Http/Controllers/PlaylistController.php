@@ -37,7 +37,7 @@ class PlaylistController extends Controller
  		$playlist->description = $request->input('description');
  		$playlist->user_id = Auth::user()->id;
  		$playlist->save();
- 		return view('home');
+ 		return redirect()->action('PlaylistController@home');
     }
 
     public function show($id)

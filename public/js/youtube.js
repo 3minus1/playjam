@@ -74,28 +74,25 @@ $(document).ready(function(){
 			else
 				next_song_id = current_song_id+1;
 		}	
+		
 		console.log("Current Song ID: "+current_song_id);
 		console.log("First Song ID: "+first_song_id);
 		console.log("Last Song ID: "+last_song_id);
 		console.log("Next Song ID: "+next_song_id);
 		var yt_id = UrlToId($('#'+next_song_id).children('div').first().html());
 		var url = YtIdToEmbedUrl(yt_id);
-		$('#ytplayer').attr('src',url);
+		
 		$('li').removeClass('active');
 		$('#'+next_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
 
-		player = new YT.Player('ytplayer', {
-		    events: {
-		      // call this function when player is ready to use
-		      'onReady': onPlayerReady,
-		      'onStateChange': onStateChange
-		    }
-		  });
+		
+		$('#ytplayer').attr('src',url);
 
 	});
 
 	$('#prev').click(function(){
+		
 		var current_song_id = parseInt($('.active').attr('id'));
 		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
 		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
@@ -112,37 +109,38 @@ $(document).ready(function(){
 		console.log("Next Song ID: "+prev_song_id);
 		var yt_id = UrlToId($('#'+prev_song_id).children('div').first().html());
 		var url = YtIdToEmbedUrl(yt_id);
-		$('#ytplayer').attr('src',url);
+		
 		$('li').removeClass('active');
 		$('#'+prev_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+prev_song_id).children('span').first().html());
-		player = new YT.Player('ytplayer', {
-		    events: {
-		      // call this function when player is ready to use
-		      'onReady': onPlayerReady,
-		      'onStateChange': onStateChange
-		    }
-		  });
+		
+		$('#ytplayer').attr('src',url);
 	});
 
 	$('.song_listing').click(function(){
 
+		var source = $(this).children('div').eq(2).html();
 
-		var yt_id = UrlToId($(this).children('div').first().html());
-		var url = YtIdToEmbedUrl(yt_id);
-		$('#ytplayer').attr('src',url);
-		$('#ytplayer').show();
-		$('li').removeClass('active');
-		$(this).addClass('active');
-		$('#current_song').html("Currently Playing: "+$(this).children('span').first().html());
-		player = new YT.Player('ytplayer', {
-		    events: {
-		      // call this function when player is ready to use
-		      'onReady': onPlayerReady,
-		      'onStateChange': onStateChange
-		    }
-		  });
-		
+		if(source=="gaana")
+		{
+			console.log("Gaana!");
+			var url = $(this).children('div').first().html();
+			$('#ytplayer').attr('src',url);
+			$('#ytplayer').show();
+			
+		}
+		else
+		{
+
+			var yt_id = UrlToId($(this).children('div').first().html());
+			var url = YtIdToEmbedUrl(yt_id);
+			$('#ytplayer').attr('src',url);
+			$('#ytplayer').show();
+			$('li').removeClass('active');
+			$(this).addClass('active');
+			$('#current_song').html("Currently Playing: "+$(this).children('span').first().html());
+			
+		}	
 
 	});
   
@@ -191,13 +189,18 @@ $(document).ready(function(){
 
 				 	 var thumbnailUrl = data.thumbnail;	
 				 	 var title = data.title + " by " + data.artist;
-				 	 var duration = data.duration;
+				 	 var duration = MMSStoSS(data.duration);
 				 	 
 				   //  var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
 				     $('.song-thumbnail').attr("src",thumbnailUrl);
 				     $('.song-source-logo').attr("src","http://css375.gaanacdn.com/images/logo.png");
 				     $('.song-title').html(title);
 				     $('.song-duration').html(duration);
+				     $('#title').val(title);
+				     $('#source').val("gaana");
+				     $('#duration').val(duration);
+				     $('#description').val("Visit Gaana.com for more details!");
+				     $('#thumbnail').val(thumbnailUrl);
 					 
 
 				 } 
@@ -256,31 +259,7 @@ $(document).ready(function(){
 
 		function youtube()
 		{
-			/*var vid_url = $('#url').val();
-
-			var vid_id = UrlToId(vid_url);
-			var api_key = 'AIzaSyBNoSJcGmYl0G1HjYVdA8V1lT-dPJPzTjY';
-
-			$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+vid_id+'&key='+api_key+'&part=snippet,contentDetails&callback=?',function(data){
-
-				 if (typeof(data.items[0]) != "undefined")
-				 {
-
-
-				 	 var thumbnailUrl = "https://img.youtube.com/vi/"+vid_id+"/maxresdefault.jpg"	
-				 	 var title = data.items[0].snippet.title;
-				     var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
-				     $('.song-thumbnail').attr("src",thumbnailUrl);
-				     $('.song-source-logo').attr("src","/logo/yt.png");
-				     $('.song-title').html(title);
-				     $('.song-duration').html(duration+" seconds");
-				     
-
-					 
-
-				 } 
-
-			});*/
+			
 
 			var song_url = $('#url').val();
 			$.getJSON('http://localhost:3000/api/yt?url='+song_url,function(data){
@@ -343,4 +322,14 @@ function ConvertToSeconds(duration)
 function YtIdToEmbedUrl(id)
 {
 	return "http://www.youtube.com/embed/"+id+"?autoplay=1&enablejsapi=1";
+}
+
+
+function MMSStoSS(mmss)
+{
+	var parts = mmss.split(':'); // split it at the colons
+	console.log(parts[0]);
+	// minutes are worth 60 seconds. Hours are worth 60 minutes.
+	var seconds = (parseInt(parts[0]) * 60) + parseInt(parts[1]); 
+	return seconds;
 }
