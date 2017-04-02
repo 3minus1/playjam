@@ -1,5 +1,5 @@
 var tag = document.createElement('script');
-tag.src = "http://www.youtube.com/player_api";
+tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 	$('#ytplayer').hide();
 	$('#gaanaplayer').hide();
-
+	
 	$('#togglePlay').click(function(){
 	var source = $('.active').children('div').eq(2).html();
 	console.log("Source: "+source);
@@ -119,6 +119,17 @@ $(document).ready(function(){
 	    	$('#ytplayer').hide();
 	    	$('#gaanaplayer').attr('src',url);
 	    }
+	    else if(source=="saavn")
+		{
+			console.log("Saavn!");
+			var url = $('#'+next_song_id).children('div').first().html();
+			$('#ytplayer').attr('src','');
+			$('#ytplayer').hide();
+			$('#gaanaplayer').attr('src','');
+		    $('#gaanaplayer').hide();
+		    window.open(url, '_blank');
+
+		}
 		$('li').removeClass('active');
 		$('#'+next_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
@@ -160,6 +171,17 @@ $(document).ready(function(){
 	    	$('#ytplayer').hide();
 	    	$('#gaanaplayer').attr('src',url);
 	    }
+	    else if(source=="saavn")
+		{
+			console.log("Saavn!");
+			var url = $('#'+prev_song_id).children('div').first().html();
+			$('#ytplayer').attr('src','');
+			$('#ytplayer').hide();
+			$('#gaanaplayer').attr('src','');
+		    $('#gaanaplayer').hide();
+		    window.open(url, '_blank');
+
+		}
 		
 		
 		$('li').removeClass('active');
@@ -191,6 +213,18 @@ $(document).ready(function(){
 			$('#gaanaplayer').attr('src','');
 			$('#ytplayer').attr('src',url);
 			$('#ytplayer').show();
+		}
+
+		else if(source=="saavn")
+		{
+			console.log("Saavn!");
+			var url = $(this).children('div').first().html();
+			$('#ytplayer').attr('src','');
+			$('#ytplayer').hide();
+			$('#gaanaplayer').attr('src','');
+		    $('#gaanaplayer').hide();
+		    window.open($(this).children('div').first().html(), '_blank');
+
 		}
 			$('li').removeClass('active');
 			$(this).addClass('active');
@@ -275,12 +309,18 @@ $(document).ready(function(){
 				 	 var thumbnailUrl = data.thumbnail;	
 				 	 var title = data.title;
 				 	 var duration = data.duration;
+				 	 var description = data.description;
 				 	 
 				   //  var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
 				     $('.song-thumbnail').attr("src",thumbnailUrl);
 				     $('.song-source-logo').attr("src","/logo/saavn.png");
 				     $('.song-title').html(title);
 				     $('.song-duration').html(duration);
+				     $('#title').val(title);
+				     $('#source').val("saavn");
+				     $('#duration').val(duration);
+				     $('#description').val(description);
+				     $('#thumbnail').val(thumbnailUrl);
 					 
 
 				 } 
@@ -377,7 +417,7 @@ function ConvertToSeconds(duration)
 
 function YtIdToEmbedUrl(id)
 {
-	return "http://www.youtube.com/embed/"+id+"?autoplay=1&enablejsapi=1";
+	return "https://www.youtube.com/embed/"+id+"?autoplay=1&enablejsapi=1";
 }
 
 
