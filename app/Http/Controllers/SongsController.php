@@ -27,4 +27,12 @@ class SongsController extends Controller
     	$song->save();
     	return redirect()->action('PlaylistController@index');
     }
+
+    public function destroy($id)
+    {
+        $song = Song::find($id);
+        $playlist = $song->playlist;
+        $song->destroy($id);
+        return redirect()->action('PlaylistController@show',$playlist);
+    }
 }

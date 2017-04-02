@@ -22,9 +22,11 @@ Route::get('playlists/{id?}','PlaylistController@show');
 Route::get('playlists/{id?}/edit','PlaylistController@edit');
 Route::put('playlists/{id?}/edit','PlaylistController@update');
 
+
 //Song Routes
 Route::get('playlists/{id?}/songs/add','SongsController@add');
 Route::post('playlists/{id?}/songs/add','SongsController@store');
+Route::delete('songs/{id?}','SongsController@destroy');
 
 Route::get('auth/logout','Auth\LoginController@logout');
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

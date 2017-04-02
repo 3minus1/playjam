@@ -10,6 +10,6 @@ class Song extends Model
 
     public function playlist()
     {
-    	return $this->hasOne('App\Playlist');
+    	return $this->belongsTo('App\Playlist');
     }
 }
