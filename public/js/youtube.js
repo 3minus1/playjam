@@ -42,6 +42,7 @@ function onStateChange(event){
 		$('#next').click();
 }
 
+var flag="playing";
 
 
 
@@ -49,9 +50,31 @@ function onStateChange(event){
 $(document).ready(function(){
 
 	$('#ytplayer').hide();
+	$('#gaanaplayer').hide();
+
+	$('#togglePlay').click(function(){
+	var source = $('.active').children('div').eq(2).html();
+	console.log("Source: "+source);
+	if(source=="gaana")
+	{
+		if(flag=="playing")
+		{
+			$('#gaanaplayer').attr('src','');
+			flag="paused";
+			console.log("Player paused!");
+		}
+		else
+		{
+			$('#gaanaplayer').attr('src',$('.active').children('div').first().html());
+			flag="playing";
+			console.log("Player resumed!");
+		}
+	}
+});
 
 
 	$('#next').click(function(){
+
 		var current_song_id = parseInt($('.active').attr('id'));
 		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
 		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
@@ -79,15 +102,25 @@ $(document).ready(function(){
 		console.log("First Song ID: "+first_song_id);
 		console.log("Last Song ID: "+last_song_id);
 		console.log("Next Song ID: "+next_song_id);
-		var yt_id = UrlToId($('#'+next_song_id).children('div').first().html());
-		var url = YtIdToEmbedUrl(yt_id);
-		
+		var source = $('#'+next_song_id).children('div').eq(2).html();
+
+		if(source=="youtube")
+	    {
+	    	var yt_id = UrlToId($('#'+next_song_id).children('div').first().html());
+			var url = YtIdToEmbedUrl(yt_id);
+			$('#ytplayer').attr('src',url);
+	    }	
+	    else if(source=="gaana")
+	    {
+	    	var url = $('#'+next_song_id).children('div').first().html();
+	    	$('#gaanaplayer').attr('src',url);
+	    }
 		$('li').removeClass('active');
 		$('#'+next_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
 
 		
-		$('#ytplayer').attr('src',url);
+		
 
 	});
 
@@ -107,14 +140,24 @@ $(document).ready(function(){
 		console.log("First Song ID: "+first_song_id);
 		console.log("Last Song ID: "+last_song_id);
 		console.log("Next Song ID: "+prev_song_id);
-		var yt_id = UrlToId($('#'+prev_song_id).children('div').first().html());
-		var url = YtIdToEmbedUrl(yt_id);
+		var source = $('#'+prev_song_id).children('div').eq(2).html();
+		if(source=="youtube")
+	    {
+	    	var yt_id = UrlToId($('#'+prev_song_id).children('div').first().html());
+			var url = YtIdToEmbedUrl(yt_id);
+			$('#ytplayer').attr('src',url);
+	    }	
+	    else if(source=="gaana")
+	    {
+	    	var url = $('#'+prev_song_id).children('div').first().html();
+	    	$('#gaanaplayer').attr('src',url);
+	    }
+		
 		
 		$('li').removeClass('active');
 		$('#'+prev_song_id).addClass('active');
 		$('#current_song').html("Currently Playing: "+$('#'+prev_song_id).children('span').first().html());
 		
-		$('#ytplayer').attr('src',url);
 	});
 
 	$('.song_listing').click(function(){
@@ -125,22 +168,23 @@ $(document).ready(function(){
 		{
 			console.log("Gaana!");
 			var url = $(this).children('div').first().html();
-			$('#ytplayer').attr('src',url);
-			$('#ytplayer').show();
+			$('#gaanaplayer').attr('src',url);
+		    $('#gaanaplayer').show();
 			
 		}
-		else
+		else if(source=="youtube")
 		{
-
+			console.log("YouTube!");
 			var yt_id = UrlToId($(this).children('div').first().html());
 			var url = YtIdToEmbedUrl(yt_id);
 			$('#ytplayer').attr('src',url);
 			$('#ytplayer').show();
+		}
 			$('li').removeClass('active');
 			$(this).addClass('active');
 			$('#current_song').html("Currently Playing: "+$(this).children('span').first().html());
 			
-		}	
+			
 
 	});
   

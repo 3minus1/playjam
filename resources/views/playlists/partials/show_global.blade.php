@@ -16,5 +16,5 @@
     </li>
     @endforeach
 </ul>
-<iframe id="ytplayer" type="text/html" width="720" height="405" src="" frameborder="2" allowfullscreen >
-<!--<iframe sandbox='allow-forms allow-scripts allow-same-origin'  id="player" type="text/html" width="720" height="405" src="http://gaana.com/song/let-me-love-you-415" frameborder="2" >-->
+<iframe  id="gaanaplayer"  type="text/html" width="0px" height="0px" sandbox='allow-forms allow-scripts allow-same-origin' src="" frameborder="0" >
+<iframe  id="ytplayer" type="text/html" width="720" height="405" src="" frameborder="2" allowfullscreen >
