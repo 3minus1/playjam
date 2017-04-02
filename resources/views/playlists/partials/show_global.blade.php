@@ -5,7 +5,7 @@
 
 
     @foreach($songs as $song)
-    <li class="song_listing collection-item avatar">
+    <li id="{{$song->id}}" class="song_listing collection-item avatar">
       <div class="hidden">{{$song->url}}</div>
       <div class="song_id hidden">{{$song->id}}</div>
       <img src="{{$song->thumbnail}}" alt="" class="circle">

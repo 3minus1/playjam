@@ -1,22 +1,93 @@
+var tag = document.createElement('script');
+tag.src = "http://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+var player;
+
+function onYouTubePlayerAPIReady() {
+  // create the global player from the specific iframe (#video)
+  player = new YT.Player('ytplayer', {
+    events: {
+      // call this function when player is ready to use
+      'onReady': onPlayerReady
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  
+
+  
+  var togglePlayButton = document.getElementById("togglePlay");
+  togglePlayButton.addEventListener("click", function() {
+    	
+    	var state = player.getPlayerState();
+		if(state==1)
+    		player.pauseVideo();
+    	else
+    		player.playVideo();
+    		    
+  });
+
+  
+}
+
+
+
 
 
 $(document).ready(function(){
 
 	$('#ytplayer').hide();
 
-	$('#togglePlay').click(function(){
-		$('#ytplayer').click();
-		console.log("Pause");
+
+	$('#next').click(function(){
+		var current_song_id = parseInt($('.active').attr('id'));
+		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
+		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
+		
+		var next_song_id = "";
+		if(current_song_id==last_song_id)
+			next_song_id = first_song_id;
+		else
+			next_song_id = current_song_id+1;
+
+		console.log("Current Song ID: "+current_song_id);
+		console.log("First Song ID: "+first_song_id);
+		console.log("Last Song ID: "+last_song_id);
+		console.log("Next Song ID: "+next_song_id);
+		var yt_id = UrlToId($('#'+next_song_id).children('div').first().html());
+		var url = YtIdToEmbedUrl(yt_id);
+		$('#ytplayer').attr('src',url);
+		$('li').removeClass('active');
+		$('#'+next_song_id).addClass('active');
+		$('#current_song').html("Currently Playing: "+$('#'+next_song_id).children('span').first().html());
 
 	});
 
-	$('#next').click(function(){
-		var current_song_id = $('.active').children('div').eq(1).html();
-		var first_song_id = $('.collection').children('li').first().children('div').eq(1).html();
-		var last_song_id = $('.collection').children('li').last().children('div').eq(1).html();
+	$('#prev').click(function(){
+		var current_song_id = parseInt($('.active').attr('id'));
+		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
+		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
+		
+		var prev_song_id = "";
+		if(current_song_id==first_song_id)
+			prev_song_id = last_song_id;
+		else
+			prev_song_id = current_song_id-1;
+
 		console.log("Current Song ID: "+current_song_id);
-		console.log(first_song_id);
-		console.log(last_song_id);
+		console.log("First Song ID: "+first_song_id);
+		console.log("Last Song ID: "+last_song_id);
+		console.log("Next Song ID: "+prev_song_id);
+		var yt_id = UrlToId($('#'+prev_song_id).children('div').first().html());
+		var url = YtIdToEmbedUrl(yt_id);
+		$('#ytplayer').attr('src',url);
+		$('li').removeClass('active');
+		$('#'+prev_song_id).addClass('active');
+		$('#current_song').html("Currently Playing: "+$('#'+prev_song_id).children('span').first().html());
 	});
 
 	$('.song_listing').click(function(){
@@ -28,6 +99,7 @@ $(document).ready(function(){
 		$('#ytplayer').show();
 		$('li').removeClass('active');
 		$(this).addClass('active');
+		$('#current_song').html("Currently Playing: "+$(this).children('span').first().html());
 		
 		
 	});
@@ -228,5 +300,5 @@ function ConvertToSeconds(duration)
 
 function YtIdToEmbedUrl(id)
 {
-	return "https://www.youtube.com/embed/"+id+"?autoplay=1&enablejsapi=1";
+	return "http://www.youtube.com/embed/"+id+"?autoplay=1&enablejsapi=1";
 }

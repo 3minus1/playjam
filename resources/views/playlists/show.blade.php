@@ -6,7 +6,7 @@
 <p>{{$playlist->description}}</p>
 <hr/>
 
-
+<p id="current_song"></p>
 <div class="row">
 	<div class="col s4 m4 l4">
 		<button type="button" id="prev" class="btn">Previous</button>
