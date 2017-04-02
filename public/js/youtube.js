@@ -108,11 +108,15 @@ $(document).ready(function(){
 	    {
 	    	var yt_id = UrlToId($('#'+next_song_id).children('div').first().html());
 			var url = YtIdToEmbedUrl(yt_id);
+			$('#gaanaplayer').attr('src','');
 			$('#ytplayer').attr('src',url);
+			$('#ytplayer').show();
 	    }	
 	    else if(source=="gaana")
 	    {
 	    	var url = $('#'+next_song_id).children('div').first().html();
+	    	$('#ytplayer').attr('src','');
+	    	$('#ytplayer').hide();
 	    	$('#gaanaplayer').attr('src',url);
 	    }
 		$('li').removeClass('active');
@@ -145,11 +149,15 @@ $(document).ready(function(){
 	    {
 	    	var yt_id = UrlToId($('#'+prev_song_id).children('div').first().html());
 			var url = YtIdToEmbedUrl(yt_id);
+			$('#gaanaplayer').attr('src','');
 			$('#ytplayer').attr('src',url);
+			$('#ytplayer').show();
 	    }	
 	    else if(source=="gaana")
 	    {
 	    	var url = $('#'+prev_song_id).children('div').first().html();
+	    	$('#ytplayer').attr('src','');
+	    	$('#ytplayer').hide();
 	    	$('#gaanaplayer').attr('src',url);
 	    }
 		
@@ -168,8 +176,11 @@ $(document).ready(function(){
 		{
 			console.log("Gaana!");
 			var url = $(this).children('div').first().html();
+			$('#ytplayer').attr('src','');
+			$('#ytplayer').hide();
 			$('#gaanaplayer').attr('src',url);
 		    $('#gaanaplayer').show();
+
 			
 		}
 		else if(source=="youtube")
@@ -177,6 +188,7 @@ $(document).ready(function(){
 			console.log("YouTube!");
 			var yt_id = UrlToId($(this).children('div').first().html());
 			var url = YtIdToEmbedUrl(yt_id);
+			$('#gaanaplayer').attr('src','');
 			$('#ytplayer').attr('src',url);
 			$('#ytplayer').show();
 		}

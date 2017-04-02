@@ -16,5 +16,6 @@
     </li>
     @endforeach
 </ul>
-<iframe  id="gaanaplayer"  type="text/html" width="0px" height="0px" sandbox='allow-forms allow-scripts allow-same-origin' src="" frameborder="0" >
-<iframe  id="ytplayer" type="text/html" width="720" height="405" src="" frameborder="2" allowfullscreen >
+<iframe id="ytplayer" type="text/html" width="720" height="405" src="" frameborder="2" allowfullscreen ></iframe>
+
+<iframe id="gaanaplayer"  type="text/html" width="0px" height="0px" sandbox='allow-forms allow-scripts allow-same-origin' src="" frameborder="0" ></iframe>
