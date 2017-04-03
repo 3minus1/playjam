@@ -115,4 +115,12 @@ class PlaylistController extends Controller
             }
  		return redirect()->action('PlaylistController@show',$id);
     }
+
+    public function destroy($id)
+    {
+        $playlist = Playlist::find($id);
+        //$playlist->songs()->detach();
+        $playlist->destroy($id);
+        return redirect()->action('PlaylistController@index');
+    }
 }

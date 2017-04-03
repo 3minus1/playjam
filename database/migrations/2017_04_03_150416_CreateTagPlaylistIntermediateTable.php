@@ -14,9 +14,9 @@ class CreateTagPlaylistIntermediateTable extends Migration
     public function up()
     {
         Schema::create('TagPlaylist', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('tag_id')->references('id')->on('tags');
-            $table->integer('playlist_id')->references('id')->on('playlists');
+            $table->increments('id')->unsigned();
+            $table->integer('tag_id')->unsigned()->references('id')->on('tags');
+            $table->integer('playlist_id')->unsigned()->references('id')->on('playlists');
             $table->timestamps();
         });
     }

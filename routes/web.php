@@ -21,6 +21,7 @@ Route::post('playlists/new','PlaylistController@store');
 Route::get('playlists/{id?}','PlaylistController@show');
 Route::get('playlists/{id?}/edit','PlaylistController@edit');
 Route::put('playlists/{id?}/edit','PlaylistController@update');
+Route::delete('playlists/{id?}','PlaylistController@destroy');
 
 
 //Song Routes

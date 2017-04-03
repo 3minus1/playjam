@@ -12,6 +12,7 @@
 	      <th>Description</th>
 	      <th>Created At</th>
 	      <th></th>
+	      <th></th>
 	  </tr>
 	</thead>
 
@@ -23,6 +24,13 @@
 	    <td>{{$playlist->description}}</td>
 	    <td>{{$playlist->created_at}}</td>
 	    <td><a href="{{action('PlaylistController@edit',$playlist->id)}}" class="btn">Edit</a></td>
+	    <td>
+		    <form action="{{action('PlaylistController@destroy',$playlist->id)}}"" method="POST">
+			    {{ csrf_field() }}
+			    {{ method_field('DELETE') }}
+			    <button class="btn btn-danger" type="submit" onclick='return confirm("Are you sure you want to delete ?")'>Delete</button>
+			</form>
+		</td>
 	  </tr>
 	@endforeach
 	</tbody>
