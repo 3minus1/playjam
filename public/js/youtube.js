@@ -91,6 +91,7 @@ $(document).ready(function(){
 
 	$('#ytplayer').hide();
 	$('#gaanaplayer').hide();
+	$('#loader').hide();
 	
 	$('#togglePlay').click(function(){
 
@@ -319,6 +320,8 @@ $(document).ready(function(){
 
 	$('#form-submit').hide();
 	$('#fetch_data').click(function(){
+		$('#fetch_data').hide();
+		$('#loader').show();
 		console.log("Works!");
 
 		var song_url = $('#url').val();
@@ -345,7 +348,8 @@ $(document).ready(function(){
 	    else if(song_url.includes("saavn"))
 	    	saavn();
 		else
-			console.log("Other");	    
+			console.log("Other");	 
+
 
 
 		function gaana()
@@ -374,6 +378,8 @@ $(document).ready(function(){
 					 
 
 				 } 
+				 $('#loader').hide();
+				 $('#form-submit').show();
 
 			});
 		}
@@ -404,11 +410,12 @@ $(document).ready(function(){
 					 
 
 				 } 
-
+				 $('#loader').hide();
+				 $('#form-submit').show();
 			});
 		}
 
-		function soundcloud()
+		/*function soundcloud()
 		{
 			$.ajax({
 			     url: "https://soundcloud.com/user-61321127/swanggml",
@@ -420,17 +427,12 @@ $(document).ready(function(){
 			          for(var i = 0; i < elements.length; i++) {
 			               var theText = elements[i].firstChild.nodeValue;
 			               // Do something here
-			          }*/
+			          }
 			     }
 			});
-		}
+		} */
 
-		function lastfm()
-		{
-			var song_url = $('#url').val();
-
-
-		}
+		
 		
 
 		function youtube()
@@ -461,7 +463,8 @@ $(document).ready(function(){
 					 
 
 				 } 
-
+				 $('#loader').hide();
+				 $('#form-submit').show();
 			});
 
 
@@ -471,7 +474,8 @@ $(document).ready(function(){
 		
 
 
-		$('#form-submit').show();
+		
+
 	});
 
 	
