@@ -37,6 +37,12 @@ class PlaylistController extends Controller
        // return $request->all();
         
         //return;
+        $this->validate($request, [
+            'name' => 'bail|required|unique:playlists|max:255',
+            'description' => 'required',
+            'tags' => 'required',
+         ]);
+
  		$playlist = new Playlist();
  		$playlist->name = $request->input('name');
  		$playlist->description = $request->input('description');
@@ -79,6 +85,12 @@ class PlaylistController extends Controller
 
     public function update($id,Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'bail|required|max:255',
+            'description' => 'required',
+            'tags' => 'required',
+         ]);
        // return $request->all();
     	$playlist = Playlist::where('id',$id)->first();
     	$playlist->name = $request->input('name');

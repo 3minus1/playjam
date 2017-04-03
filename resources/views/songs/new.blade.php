@@ -8,6 +8,15 @@
     </div>
 </div>
 
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
  <form  id="add-song-form" action="{{action('SongsController@store',$playlist->id)}}" class="s12 m12 l12 " method="post" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="row">

@@ -178,3 +178,18 @@ img{
 	padding-top: 4%;
 	padding-left: 26px;
 }
+
+.alert
+li{
+    
+    color: #fff;
+    padding-left: 2%;
+    line-height: 2;
+    border-radius: 11px;
+    margin-bottom: 1%;
+}
+
+.alert-danger
+li{
+	background-color: #6f5955;
+}

@@ -16,6 +16,9 @@ class SongsController extends Controller
 
     public function store($playlist_id,Request $request)
     {
+        $this->validate($request, [
+            'url' => 'bail|required|unique:songs|max:255',    
+        ]);
     	$song = new Song();
     	$song->title = $request->input('title');
     	$song->description = $request->input('description');

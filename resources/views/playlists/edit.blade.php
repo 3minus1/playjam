@@ -7,6 +7,15 @@
   <p>{{$tag->tag_name}}</p>
 @endforeach
 </div>
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
  <form  id="create-playlist-form" action="{{action('PlaylistController@update',$playlist->id)}}" class="s12 m12 l12 " method="post" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <input type="hidden" name="_method" value="PUT">
