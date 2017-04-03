@@ -68,7 +68,7 @@ class PlaylistController extends Controller
     {
     	$playlist = Playlist::find($id);
     	$songs = $playlist->songs()->get();
-        $tags = TagPlaylist::where('playlist_id',$id)->get();
+        $tags = $playlist->tags()->get();
         $i=1;
     	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs, 'i'=>$i, 'tags'=>$tags] );
     }

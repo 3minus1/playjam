@@ -91,3 +91,8 @@ img{
 	display: block;
 	color: inherit !important;
 }
+
+.playlists-container{
+	max-height: 645px;
+	overflow: auto;
+}

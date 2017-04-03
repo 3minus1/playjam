@@ -66,6 +66,11 @@ $(document).ready(function(){
 	    });
 	  });
 
+	  $('.secondary-content').click(function(){
+	  	alert("SA!");
+	  	return;
+	  });
+
 
 
 	$('#ytplayer').hide();

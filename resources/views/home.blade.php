@@ -5,10 +5,10 @@
 	<br/>
 	<a href="{{action('PlaylistController@create')}}">Create Playlist</a>
 
-	
+ <div class="playlists-container row">
 	@foreach($playlists as $playlist)
 
-		 <div class="row">
+		
 	        <div class="col s4 m4 l4">
 	          <div class="card small" >
 	            <div class="card-image">
@@ -22,9 +22,11 @@
 	              <a href="{{action('PlaylistController@show',$playlist->id)}}">View Playlist</a>
 	            </div>
 	          </div>
-	        </div>
+	     </div>
 
 	@endforeach
+</div>
+
 
        
 
