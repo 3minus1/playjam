@@ -1,6 +1,11 @@
 @extends('master')
 @section('title','Create Playlist')
 @section('content')
+<div class="page-header row">
+    <div class="col s12 m12 l12">
+       <h3>Create Playlist</h3>
+    </div>
+</div>
 
  <form  id="create-playlist-form" action="{{action('PlaylistController@store')}}" class="s12 m12 l12 " method="post" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
@@ -18,9 +23,9 @@
              <div class="input-field col s12 m12 l12">
 
                 <div class="chips chips-placeholder"></div>
-
+                <button id="submitBtn" type="submit"  class="btn col s12 m12 l12" >Submit</button>
             </div>
-            <button id="submitBtn" type="submit"  class="btn col s12 m12 l12" >Submit</button>
+            
         </div>
         
 </form>

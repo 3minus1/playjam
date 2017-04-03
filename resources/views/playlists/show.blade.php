@@ -9,15 +9,30 @@
   js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<h3>{{$playlist->name}}</h3>
 
+<div class="page-header row">
+    <div class="heading col s5 m5 l5" style="float: left;">
+       <h3>{{$playlist->name}}</h3>
+    </div>
+    @if(Auth::user()->id == $playlist->user_id)
+    <div class="flatBtn col s2 m2 l2">
+    	<a href="{{action('PlaylistController@edit',$playlist->id)}}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit</a>
+   	</div>
+   	<div class="flatBtn col s3 m3 l3">
+    	<a class="waves-effect waves-light btn" href="{{action('SongsController@add',$playlist->id)}}" ><i class="material-icons left">playlist_add</i>Add Songs</a>
+    </div>
+    @endif
+    <div class="col s2 m2 l2 fb-share-button" data-href="http://localhost:8000/playlists/4" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
+    
+</div>
 @if(Auth::user()->id == $playlist->user_id)
-	<a class="btn" href="{{action('PlaylistController@edit',$playlist->id)}}">Edit</a>
-	<a class="btn" href="{{action('SongsController@add',$playlist->id)}}">Add Songs</a>
 	
 @endif
-<div class="fb-share-button" data-href="http://localhost:8000/playlists/4" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
-<p>{{$playlist->description}}</p>
+<h3></h3>
+
+
+
+<p>About playlist: {{$playlist->description}}</p>
 <p>Tags:
 @foreach($tags as $tag)
 	<a href="#">{{$tag->tag_name}} </a>
@@ -26,27 +41,26 @@
 <hr/>
 
 <p id="current_song"></p>
-<div class="row">
-	<div class="col s3 m3 l3">
-		<button type="button" id="prev" class="btn">Previous</button>
+<div class="row player-controls">
+
+	<div class="col s1 m1 l1 offset-l4 ">
+		<button type="button" class="waves-effect waves-light btn" id="prev" ><i class="material-icons">skip_previous</i></button>
 	</div>
-	<div class="col s3 m3 l3">
-		<button type="button" id="togglePlay" class="btn">Play/Pause</button>
+	<div class="col s1 m1 l1">
+		<button type="button" class="waves-effect waves-light btn" id="togglePlay"><i id="play-pause" class="material-icons">play_arrow</i></button>
 	</div>
-	<div class="col s3 m3 l3">
-		<button type="button" id="next" class="btn">Next</button>
+	<div class="col s1 m1 l1">
+		<button type="button" class="waves-effect waves-light btn" id="next"><i class="material-icons">skip_next</i></button>
 	</div>
 	<div class="switch col s3 m3 l3">
-    <label>
-      Linear
-      <input id="toggleShuffle" type="checkbox">
-      <span class="lever"></span>
-      Shuffle
-    </label>
-
-  </div>
-  
+	    <label>
+	      <input id="toggleShuffle" type="checkbox">
+	      <span class="lever"></span>
+	      Shuffle
+	    </label>
+  	</div> 
 </div>
+<hr/>
 
 <ul class="collection">
 
@@ -71,8 +85,10 @@
     @endforeach
 </ul>
 
-<iframe id="ytplayer" type="text/html" width="720" height="405" src="" frameborder="2" allowfullscreen ></iframe>
-
+<div class="row">
+	<div class="offset-l2 col s8 l8 m8">
+		<iframe id="ytplayer" type="text/html" width="100%" height="405" src="" frameborder="2" allowfullscreen ></iframe>
+	</div>
 <iframe id="gaanaplayer"  type="text/html" width="0px" height="0px" sandbox='allow-forms allow-scripts allow-same-origin' src="" frameborder="0" ></iframe>
 
 

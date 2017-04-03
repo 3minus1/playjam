@@ -77,7 +77,43 @@ $(document).ready(function(){
 	$('#gaanaplayer').hide();
 	
 	$('#togglePlay').click(function(){
+
+		if(flag=="playing")
+		{
+			$('#play-pause').html('pause');
+			flag="paused";
+			console.log("Player paused!");
+		}
+		else
+		{
+
+			$('#play-pause').html('play_arrow');
+			flag="playing";
+			console.log("Player resumed!");
+		}
+
+
 	var source = $('.active').children('div').eq(2).html();
+	if(! source)
+	{
+		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
+		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
+		if($('#toggleShuffle').is(":checked") == true)
+		{
+			var idArray = [];
+			for (var i = first_song_id; i <= last_song_id; i++)
+			    idArray.push(i);
+
+			while(next_song_id == current_song_id)
+				next_song_id = idArray[Math.floor(Math.random() * (i-1)) ];
+			
+		}
+		else
+		{
+			$('.collection').children('li').first().click();
+			
+		}	
+	}
 	console.log("Source: "+source);
 	if(source=="gaana")
 	{
@@ -89,6 +125,7 @@ $(document).ready(function(){
 		}
 		else
 		{
+
 			$('#gaanaplayer').attr('src',$('.active').children('div').first().html());
 			flag="playing";
 			console.log("Player resumed!");
@@ -98,7 +135,7 @@ $(document).ready(function(){
 
 
 	$('#next').click(function(){
-
+		$('#play-pause').html('pause');
 		var current_song_id = parseInt($('.active').attr('id'));
 		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
 		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
@@ -164,7 +201,7 @@ $(document).ready(function(){
 	});
 
 	$('#prev').click(function(){
-		
+		$('#play-pause').html('pause');
 		var current_song_id = parseInt($('.active').attr('id'));
 		var first_song_id = parseInt($('.collection').children('li').first().attr('id'));
 		var last_song_id = parseInt($('.collection').children('li').last().attr('id'));
@@ -216,6 +253,9 @@ $(document).ready(function(){
 
 	$('.song_listing').click(function(){
 
+
+		$('#play-pause').html('pause');
+		flag="paused";
 		var source = $(this).children('div').eq(2).html();
 
 		if(source=="gaana")

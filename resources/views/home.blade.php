@@ -3,7 +3,16 @@
 @section('content')
 @if(Auth::user())
 	<br/>
-	<a href="{{action('PlaylistController@create')}}">Create Playlist</a>
+	<div class="header row">
+		<div class="heading col s5 m5 l5">
+			<h3>Browse Playlists:</h3>
+		</div>
+		<div class="addBtn col s1 m1 l1">
+			<a href="{{action('PlaylistController@create')}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+		</div>
+	</div>
+        
+	<hr/>
 
  <div class="playlists-container row">
 	@foreach($playlists as $playlist)
