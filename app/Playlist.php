@@ -12,4 +12,9 @@ class Playlist extends Model
     {
     	return $this->hasMany('App\Song');
     }
+
+    public function tags()
+    {
+    	return $this->hasMany('App\Tag');
+    }
 }

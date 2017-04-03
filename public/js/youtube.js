@@ -48,6 +48,25 @@ var flag="playing";
 
 
 $(document).ready(function(){
+	 $('.chips-placeholder').material_chip({
+	    placeholder: 'Enter tags',
+	    secondaryPlaceholder: 'Enter tags',
+	  });
+
+	  $('.chips').on('chip.add', function(e, chip){
+   		 $('#create-playlist-form').append('<input type="hidden" name="tags[]" value="'+chip.tag+'">');
+ 	  });
+
+	  $('.chips').on('chip.delete', function(e, chip){
+	     var tag = chip.tag;
+	     $('input[name="tags[]"]').each(function() {
+	        if ($(this).val() === tag) {
+	            $(this).remove();
+	        }
+	    });
+	  });
+
+
 
 	$('#ytplayer').hide();
 	$('#gaanaplayer').hide();

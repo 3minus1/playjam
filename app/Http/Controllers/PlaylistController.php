@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Playlist;
 use App\User;
 use App\Song;
+use App\Tag;
 use Auth;
 
 
@@ -32,11 +33,21 @@ class PlaylistController extends Controller
 
     public function store(Request $request)
     {
+       // return $request->all();
+        
+        //return;
  		$playlist = new Playlist();
  		$playlist->name = $request->input('name');
  		$playlist->description = $request->input('description');
  		$playlist->user_id = Auth::user()->id;
  		$playlist->save();
+        foreach($request->tags as $tag)
+        {
+            $tag_record = new Tag();
+            $tag_record->tag_name = $tag;
+            $tag_record->playlist_id = $playlist->id;
+            $tag_record->save();
+        }
  		return redirect()->action('PlaylistController@home');
     }
 

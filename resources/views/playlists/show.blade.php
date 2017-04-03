@@ -1,7 +1,14 @@
 @extends('master')
 @section('title',"Playlist")
 @section('content')
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <h3>{{$playlist->name}}</h3>
 <p>{{$playlist->description}}</p>
 <hr/>
@@ -24,7 +31,9 @@
       <span class="lever"></span>
       Shuffle
     </label>
+
   </div>
+  <div class="fb-share-button" data-href="http://localhost:8000/playlists/4" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
 </div>
 
 @if(Auth::user()->id == $playlist->user_id)

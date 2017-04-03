@@ -18,11 +18,13 @@
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/materialize-tags.css">
         <!-- Compiled and minified JavaScript -->
         <script src="https://apis.google.com/js/api.js"></script>
 
          <script type="text/JavaScript" src="/js/index.js"></script> 
          <script type="text/JavaScript" src="/js/youtube.js"></script> 
+         <script type="text/JavaScript" src="/js/materialize-tags.min.js"></script> 
               
 
     </head>

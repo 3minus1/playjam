@@ -12,9 +12,15 @@
             <div class="input-field col s12 m12 l12">
                   <textarea id="description" name="description" class="materialize-textarea"></textarea>
                   <label for="description">Description</label>
-                  <input type="submit"  class="btn col s12 m12 l12" value="Save">
+                  
             </div>
             
+             <div class="input-field col s12 m12 l12">
+
+                <div class="chips chips-placeholder"></div>
+
+            </div>
+            <button id="submitBtn" type="submit"  class="btn col s12 m12 l12" >Submit</button>
         </div>
         
 </form>
