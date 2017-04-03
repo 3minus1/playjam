@@ -25,10 +25,12 @@
     <div class="col s2 m2 l2 fb-share-button" data-href="http://localhost:8000/playlists/4" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
     
 </div>
-@if(Auth::user()->id == $playlist->user_id)
-	
+
+@if (session('status'))
+    <div class="alert alert-success">
+       <p>{{ session('status') }}</p>
+    </div>
 @endif
-<h3></h3>
 
 
 

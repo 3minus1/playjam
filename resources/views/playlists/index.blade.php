@@ -7,7 +7,11 @@
        <h3>My Playlists</h3>
     </div>
 </div>
-
+@if (session('status'))
+    <div class="alert alert-success">
+       <p>{{ session('status') }}</p>
+    </div>
+@endif
 <table>
 	<thead>
 	  <tr>
@@ -39,6 +43,7 @@
 	@endforeach
 	</tbody>
 </table>
+<hr/>
 @endsection
     
 

@@ -99,7 +99,7 @@ img{
 }
 
 .playlists-container{
-	max-height: 645px;
+	max-height: 420px;
 	overflow: auto;
 }
 
@@ -179,8 +179,7 @@ img{
 	padding-left: 26px;
 }
 
-.alert
-li{
+.alert li, .alert p{
     
     color: #fff;
     padding-left: 2%;
@@ -192,6 +191,11 @@ li{
 .alert-danger
 li{
 	background-color: #6f5955;
+}
+
+.alert-success
+p{
+	background-color: #51e751;
 }
 
 .tag-collection{

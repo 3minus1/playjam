@@ -64,7 +64,7 @@ class PlaylistController extends Controller
                 $playlist->tags()->attach($tag_record->id);
               
             }
- 		return redirect()->action('PlaylistController@home');
+ 		return redirect()->action('PlaylistController@home')->with('status','Playlist has been created!');
     }
 
     public function show($id)
@@ -113,7 +113,7 @@ class PlaylistController extends Controller
                 $playlist->tags()->attach($tag_record->id);
               
             }
- 		return redirect()->action('PlaylistController@show',$id);
+ 		return redirect()->action('PlaylistController@show',$id)->with('status','Playlist has been updated!');
     }
 
     public function destroy($id)
@@ -121,6 +121,6 @@ class PlaylistController extends Controller
         $playlist = Playlist::find($id);
         //$playlist->songs()->detach();
         $playlist->destroy($id);
-        return redirect()->action('PlaylistController@index');
+        return redirect()->action('PlaylistController@index')->with('status','Playlist has been deleted!');
     }
 }

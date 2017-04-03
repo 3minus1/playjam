@@ -28,7 +28,7 @@ class SongsController extends Controller
     	$song->playlist_id = $playlist_id;
     	$song->duration = $request->input('duration');
     	$song->save();
-    	return redirect()->action('PlaylistController@index');
+    	return redirect()->action('PlaylistController@show',$playlist_id)->with('status','Song has been added!');
     }
 
     public function destroy($id)
@@ -36,6 +36,6 @@ class SongsController extends Controller
         $song = Song::find($id);
         $playlist = $song->playlist;
         $song->destroy($id);
-        return redirect()->action('PlaylistController@show',$playlist);
+        return redirect()->action('PlaylistController@show',$playlist)->with('status','Song has been deleted!');
     }
 }

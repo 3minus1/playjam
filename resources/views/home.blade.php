@@ -14,6 +14,12 @@
         
 	<hr/>
 
+@if (session('status'))
+    <div class="alert alert-success">
+       <p>{{ session('status') }}</p>
+    </div>
+@endif
+
  <div class="playlists-container row">
 	@foreach($playlists as $playlist)
 
