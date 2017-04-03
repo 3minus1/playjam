@@ -21,11 +21,11 @@
 	        <div class="col s4 m4 l4">
 	          <div class="card small" >
 	            <div class="card-image">
-	              <img src="/logo/yt.png">
-	              <span class="card-title">Playlist #1</span>
+	              <img src="https://maxcdn.icons8.com/Color/PNG/512/Music/playlist-512.png" height="195px" width="auto">
+	              <span class="card-title"></span>
 	            </div>
 	            <div class="card-content">
-	              <p>{{$playlist->description}}</p>
+	              <p>{{$playlist->name}}</p>
 	            </div>
 	            <div class="card-action">
 	              <a href="{{action('PlaylistController@show',$playlist->id)}}">View Playlist</a>

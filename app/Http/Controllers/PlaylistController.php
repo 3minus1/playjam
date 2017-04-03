@@ -42,25 +42,22 @@ class PlaylistController extends Controller
  		$playlist->description = $request->input('description');
  		$playlist->user_id = Auth::user()->id;
  		$playlist->save();
-        foreach($request->tags as $tag)
-        {
-            if(! Tag::where('tag_name',$tag)->first()) //Tag Name hasn't yet been registered in the database
+        if($request->tags)
+            foreach($request->tags as $tag)
             {
-               $tag_record = new Tag();
-               $tag_record->tag_name = $tag;
-               $tag_record->save();
+                if(! Tag::where('tag_name',$tag)->first()) //Tag Name hasn't yet been registered in the database
+                {
+                   $tag_record = new Tag();
+                   $tag_record->tag_name = $tag;
+                   $tag_record->save();
 
+                }
+                else
+                   $tag_record = Tag::where('tag_name',$tag)->first();
+                
+                $playlist->tags()->attach($tag_record->id);
+              
             }
-            else
-               $tag_record = Tag::where('tag_name',$tag)->first();
-            
-            $playlist->tags()->attach($tag_record->id);
-           /* $tag_playlist = new TagPlaylist();
-            $tag_playlist->tag_id = $tag_record->id;
-            $tag_playlist->playlist_id = $playlist->id;
-            $tag_playlist->save(); */
-
-        }
  		return redirect()->action('PlaylistController@home');
     }
 
@@ -76,15 +73,34 @@ class PlaylistController extends Controller
     public function edit($id)
     {
     	$playlist = Playlist::where('id',$id)->first();
-    	return view('playlists.edit',[ 'playlist'=>$playlist ]);
+        $tags = $playlist->tags()->get();
+    	return view('playlists.edit',[ 'playlist'=>$playlist, 'tags'=>$tags ]);
     }
 
     public function update($id,Request $request)
     {
+       // return $request->all();
     	$playlist = Playlist::where('id',$id)->first();
     	$playlist->name = $request->input('name');
  		$playlist->description = $request->input('description');
  		$playlist->save();
+        $playlist->tags()->detach(); //Remove all current tags associated with the playlist
+        if($request->tags)
+            foreach($request->tags as $tag)
+            {
+                if(! Tag::where('tag_name',$tag)->first()) //Tag Name hasn't yet been registered in the database
+                {
+                   $tag_record = new Tag();
+                   $tag_record->tag_name = $tag;
+                   $tag_record->save();
+
+                }
+                else
+                   $tag_record = Tag::where('tag_name',$tag)->first();
+                
+                $playlist->tags()->attach($tag_record->id);
+              
+            }
  		return redirect()->action('PlaylistController@show',$id);
     }
 }

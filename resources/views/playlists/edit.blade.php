@@ -2,6 +2,11 @@
 @section('title','Create Playlist')
 @section('content')
 
+<div class="hidden tags">
+@foreach($tags as $tag)
+  <p>{{$tag->tag_name}}</p>
+@endforeach
+</div>
  <form  id="create-playlist-form" action="{{action('PlaylistController@update',$playlist->id)}}" class="s12 m12 l12 " method="post" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <input type="hidden" name="_method" value="PUT">
@@ -13,7 +18,11 @@
             <div class="input-field col s12 m12 l12">
                   <textarea id="description" name="description" class="materialize-textarea" >{{$playlist->description}}</textarea>
                   <label for="description">Description</label>
-                  <input type="submit"  class="btn col s12 m12 l12" value="Save">
+            </div>
+             <div class="input-field col s12 m12 l12">
+
+                <div class="chips chips-initial"></div>
+                <button id="submitBtn" type="submit"  class="btn col s12 m12 l12" >Save</button>
             </div>
             
         </div>
