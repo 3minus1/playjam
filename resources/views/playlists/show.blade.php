@@ -23,7 +23,6 @@
     </div>
     @endif
     <div class="col s2 m2 l2 fb-share-button" data-href="http://localhost:8000/playlists/4" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
-    
 </div>
 
 @if (session('status'))
@@ -33,7 +32,7 @@
 @endif
 
 
-
+<p>Created by: <a href="{{action('PlaylistController@userPlaylists',$playlist->user->id)}}">{{$playlist->user->name}}</a></p>
 <p>About playlist: {{$playlist->description}}</p>
 <p>Tags:
 @foreach($tags as $tag)

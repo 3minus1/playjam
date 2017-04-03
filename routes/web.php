@@ -30,6 +30,7 @@ Route::post('playlists/{id?}/songs/add','SongsController@store');
 Route::delete('songs/{id?}','SongsController@destroy');
 
 Route::get('/tags/{id?}','TagsController@show');
+Route::get('/users/{id?}','PlaylistController@userPlaylists');
 
 Route::get('auth/logout','Auth\LoginController@logout');
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

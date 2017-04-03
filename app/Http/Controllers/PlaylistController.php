@@ -123,4 +123,11 @@ class PlaylistController extends Controller
         $playlist->destroy($id);
         return redirect()->action('PlaylistController@index')->with('status','Playlist has been deleted!');
     }
+
+    public function userPlaylists($id)
+    {   
+        $user = User::find($id);
+        $playlists = $user->playlists()->get();
+        return view('playlists.userPlaylists',['user'=>$user, 'playlists'=>$playlists]);
+    }
 }

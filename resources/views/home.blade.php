@@ -1,6 +1,8 @@
 @extends('master')
 @section('title','Home')
 @section('content')
+<div id="fb-root"></div>
+
 @if(Auth::user())
 	<br/>
 	<div class="header row">
@@ -49,7 +51,24 @@
 
 
 @else
-	<h2>Not Logged In</h2>
-	<a href="/auth/facebook">Login</a>
+	
+	<div class="page-header row">
+	    <div class="col s12 m12 l12">
+	       <h3>Welcome to PlayJam!</h3>
+	    </div>
+	</div>
+	<div class="home-banner row">
+		<div class="col s12 m12 l12">
+			<h2><i>Create, curate, and share playlists</i></h2>
+			<h3> from across the web!</h3>
+			<div class="login-btn">
+				<a href="/auth/facebook"><img width="40%" src="/logo/fb-btn.png"></a>
+			</div>
+
+		</div>
+		<i>Please login via Facebook to use PlayJam.</i>
+	</div>
+	
+	<hr/>
 @endif
 @endsection

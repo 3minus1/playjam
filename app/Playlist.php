@@ -17,4 +17,9 @@ class Playlist extends Model
     {
     	return $this->belongsToMany('App\Tag','TagPlaylist')->withTimestamps();
     }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }
