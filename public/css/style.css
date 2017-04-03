@@ -69,6 +69,7 @@ img{
 
 .song-source-logo{
 	height: 80px;
+	padding-left: 4px;
 }
 
 .song-title, .song-duration{
@@ -77,6 +78,11 @@ img{
 
 .song-title{
 	margin-top: 1px;
+	font-size: 26px;
+}
+
+.song-duration{
+	font-size: 20px;
 }
 
 .card{
@@ -133,4 +139,8 @@ img{
 	padding-top: 1%;
 	max-height: 500px;
 	overflow: auto;
+}
+
+.resetBtn{
+	width: 100%;
 }

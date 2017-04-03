@@ -56,6 +56,17 @@ $(document).ready(function(){
 		tag_object_array.push(new_tag_object); 
 	});
 
+	$('#reset').click(function(){
+		$('#url').val("");
+		$('#song-thumbnail').attr('src',"");
+		$('#song-title').html("");
+		$('#song-duration').html("");
+		$('#song-source-logo').attr('src',"");
+		$('#form-submit').hide();
+		$('#reset').hide();
+		$('#fetch_data').show();
+
+	});
 
 	$('.chips-initial').material_chip({
     data: tag_object_array
@@ -92,6 +103,7 @@ $(document).ready(function(){
 	$('#ytplayer').hide();
 	$('#gaanaplayer').hide();
 	$('#loader').hide();
+	$('#reset').hide();
 	
 	$('#togglePlay').click(function(){
 
@@ -380,6 +392,7 @@ $(document).ready(function(){
 				 } 
 				 $('#loader').hide();
 				 $('#form-submit').show();
+				 $('#reset').show();
 
 			});
 		}
@@ -412,6 +425,7 @@ $(document).ready(function(){
 				 } 
 				 $('#loader').hide();
 				 $('#form-submit').show();
+				 $('#reset').show();
 			});
 		}
 
@@ -465,6 +479,7 @@ $(document).ready(function(){
 				 } 
 				 $('#loader').hide();
 				 $('#form-submit').show();
+				 $('#reset').show();
 			});
 
 
