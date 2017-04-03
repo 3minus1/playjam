@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    protected $table = 'tags';
+    protected $table = 'Tags';
 
-    public function playlist()
+    public function playlists()
     {
-    	return $this->belongsTo('App\Playlist');
+    	return $this->belongsToMany('App\Playlist','TagPlaylist')->withTimestamps();
     }
 }

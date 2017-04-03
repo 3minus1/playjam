@@ -11,6 +11,11 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <h3>{{$playlist->name}}</h3>
 <p>{{$playlist->description}}</p>
+<p>Tags:
+@foreach($tags as $tag)
+	<a href="#">{{$tag->tag_name}} </a>
+@endforeach
+</p>
 <hr/>
 
 <p id="current_song"></p>

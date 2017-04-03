@@ -7,6 +7,7 @@ use App\Playlist;
 use App\User;
 use App\Song;
 use App\Tag;
+use App\TagPlaylist;
 use Auth;
 
 
@@ -43,20 +44,33 @@ class PlaylistController extends Controller
  		$playlist->save();
         foreach($request->tags as $tag)
         {
-            $tag_record = new Tag();
-            $tag_record->tag_name = $tag;
-            $tag_record->playlist_id = $playlist->id;
-            $tag_record->save();
+            if(! Tag::where('tag_name',$tag)->first()) //Tag Name hasn't yet been registered in the database
+            {
+               $tag_record = new Tag();
+               $tag_record->tag_name = $tag;
+               $tag_record->save();
+
+            }
+            else
+               $tag_record = Tag::where('tag_name',$tag)->first();
+            
+            $playlist->tags()->attach($tag_record->id);
+           /* $tag_playlist = new TagPlaylist();
+            $tag_playlist->tag_id = $tag_record->id;
+            $tag_playlist->playlist_id = $playlist->id;
+            $tag_playlist->save(); */
+
         }
  		return redirect()->action('PlaylistController@home');
     }
 
     public function show($id)
     {
-    	$playlist = Playlist::where('id',$id)->first();
-    	$songs = Song::where('playlist_id',$id)->get();
+    	$playlist = Playlist::find($id);
+    	$songs = $playlist->songs()->get();
+        $tags = TagPlaylist::where('playlist_id',$id)->get();
         $i=1;
-    	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs, 'i'=>$i] );
+    	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs, 'i'=>$i, 'tags'=>$tags] );
     }
 
     public function edit($id)
