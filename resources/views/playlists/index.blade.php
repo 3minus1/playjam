@@ -22,7 +22,7 @@
 	    <td><a href="{{action('PlaylistController@show',$playlist->id)}}">{{$playlist->name}}</a></td>
 	    <td>{{$playlist->songs->count()}}</td>
 	    <td>{{$playlist->description}}</td>
-	    <td>{{$playlist->created_at}}</td>
+	    <td>{{date('F d, Y', strtotime($playlist->created_at))}}</td>
 	    <td><a href="{{action('PlaylistController@edit',$playlist->id)}}" class="btn">Edit</a></td>
 	    <td>
 		    <form action="{{action('PlaylistController@destroy',$playlist->id)}}"" method="POST">
