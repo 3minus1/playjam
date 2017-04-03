@@ -193,3 +193,9 @@ li{
 li{
 	background-color: #6f5955;
 }
+
+.tag-collection{
+	padding-top: 0px;
+	max-height: 400px;
+	overflow: auto;
+}

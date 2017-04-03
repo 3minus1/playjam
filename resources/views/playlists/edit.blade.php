@@ -7,6 +7,13 @@
   <p>{{$tag->tag_name}}</p>
 @endforeach
 </div>
+
+<div class="page-header row">
+    <div class="col s12 m12 l12">
+       <h3>Edit Playlist</h3>
+    </div>
+</div>
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>

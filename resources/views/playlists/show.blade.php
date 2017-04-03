@@ -35,7 +35,7 @@
 <p>About playlist: {{$playlist->description}}</p>
 <p>Tags:
 @foreach($tags as $tag)
-	<a href="#">{{$tag->tag_name}} </a>
+	<a href="{{action('TagsController@show',$tag->id)}}">{{$tag->tag_name}} </a>
 @endforeach
 </p>
 <hr/>

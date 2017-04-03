@@ -2,7 +2,11 @@
 @section('title','My Playlists')
 @section('content')
 
-<h3> My Playlists</h3>
+<div class="page-header row">
+    <div class="col s12 m12 l12">
+       <h3>My Playlists</h3>
+    </div>
+</div>
 
 <table>
 	<thead>
