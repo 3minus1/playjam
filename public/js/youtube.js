@@ -378,7 +378,11 @@ $(document).ready(function(){
 				 	 var duration = MMSStoSS(data.duration);
 				 	 
 				   //  var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
+				   	 $('#song-thumbnail').removeClass();
+				   	 $('#song-thumbnail').addClass("song-thumbnail gaanaThumbnail");
 				     $('.song-thumbnail').attr("src",thumbnailUrl);
+				     $('#song-source-logo').removeClass();
+				     $('#song-source-logo').addClass("song-source-logo gaanaLogo");
 				     $('.song-source-logo').attr("src","http://css375.gaanacdn.com/images/logo.png");
 				     $('.song-title').html(title);
 				     $('.song-duration').html(duration);
@@ -411,7 +415,11 @@ $(document).ready(function(){
 				 	 var description = data.description;
 				 	 
 				   //  var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
+				     $('#song-thumbnail').removeClass();
+				   	 $('#song-thumbnail').addClass("song-thumbnail saavnThumbnail");
 				     $('.song-thumbnail').attr("src",thumbnailUrl);
+				     $('#song-source-logo').removeClass();
+				     $('#song-source-logo').addClass("song-source-logo saavnLogo");
 				     $('.song-source-logo').attr("src","/logo/saavn.png");
 				     $('.song-title').html(title);
 				     $('.song-duration').html(duration);
@@ -465,7 +473,11 @@ $(document).ready(function(){
 				 	 var description = data.description;
 				 	 
 				   //  var duration = ConvertToSeconds(data.items[0].contentDetails.duration);
+				     $('#song-thumbnail').removeClass();
+				   	 $('#song-thumbnail').addClass("song-thumbnail youtubeThumbnail");
 				     $('.song-thumbnail').attr("src",thumbnailUrl);
+				     $('#song-source-logo').removeClass();
+				     $('#song-source-logo').addClass("song-source-logo youtubeLogo");
 				     $('.song-source-logo').attr("src","/logo/yt.png");
 				     $('.song-title').html(title);
 				     $('.song-duration').html(duration+" seconds");

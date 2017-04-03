@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="song_meta row">
-			<div class="thumbnail col s4 l4 m4">
+			<div class="thumbnail col s4 l4 m4 center">
 				<img id="song-thumbnail" class="song-thumbnail" src="">
                 <button type="button" id="reset" class="btn resetBtn">Reset</button>
 			</div>

@@ -144,3 +144,37 @@ img{
 .resetBtn{
 	width: 100%;
 }
+
+.gaanaThumbnail{
+	border-right: 70px solid aliceblue;
+	border-left: 70px solid aliceblue;
+}
+
+.gaanaLogo{
+	max-width: 140px;
+	height: auto;
+	padding-top: 3%;
+	padding-left: 17px;
+}
+
+.youtubeThumbnail{
+	max-width: 100% !important;
+}
+
+.youtubeLogo{
+	height: 80px;
+	padding-left: 4px;
+}
+
+.saavnThumbnail{
+	max-height: 181px;
+	border-right: 70px solid aliceblue;
+    border-left: 70px solid aliceblue;
+}
+
+.saavnLogo{
+	max-width: 140px !important;
+	height: auto;
+	padding-top: 4%;
+	padding-left: 26px;
+}
