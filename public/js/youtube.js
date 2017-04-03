@@ -385,7 +385,7 @@ $(document).ready(function(){
 				     $('#song-source-logo').addClass("song-source-logo gaanaLogo");
 				     $('.song-source-logo').attr("src","http://css375.gaanacdn.com/images/logo.png");
 				     $('.song-title').html(title);
-				     $('.song-duration').html(duration);
+				     $('.song-duration').html("Duration: "+secondsToMMSS(duration));
 				     $('#title').val(title);
 				     $('#source').val("gaana");
 				     $('#duration').val(duration);
@@ -422,7 +422,7 @@ $(document).ready(function(){
 				     $('#song-source-logo').addClass("song-source-logo saavnLogo");
 				     $('.song-source-logo').attr("src","/logo/saavn.png");
 				     $('.song-title').html(title);
-				     $('.song-duration').html(duration);
+				     $('.song-duration').html("Duration: "+secondsToMMSS(duration));
 				     $('#title').val(title);
 				     $('#source').val("saavn");
 				     $('#duration').val(duration);
@@ -480,7 +480,7 @@ $(document).ready(function(){
 				     $('#song-source-logo').addClass("song-source-logo youtubeLogo");
 				     $('.song-source-logo').attr("src","/logo/yt.png");
 				     $('.song-title').html(title);
-				     $('.song-duration').html(duration+" seconds");
+				     $('.song-duration').html("Duration: "+secondsToMMSS(duration));
 				     $('#title').val(title);
 				     $('#source').val("youtube");
 				     $('#duration').val(duration);
@@ -539,4 +539,12 @@ function MMSStoSS(mmss)
 	// minutes are worth 60 seconds. Hours are worth 60 minutes.
 	var seconds = (parseInt(parts[0]) * 60) + parseInt(parts[1]); 
 	return seconds;
+}
+
+function secondsToMMSS(time)
+{
+	var minutes = Math.floor(time / 60);
+	var seconds = time%60;
+	return minutes+":"+seconds;
+
 }
