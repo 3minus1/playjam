@@ -64,7 +64,7 @@ class PlaylistController extends Controller
                 $playlist->tags()->attach($tag_record->id);
               
             }
- 		return redirect()->action('PlaylistController@home')->with('status','Playlist has been created!');
+ 		return redirect()->action('Auth\LoginController@home')->with('status','Playlist has been created!');
     }
 
     public function show($id)
