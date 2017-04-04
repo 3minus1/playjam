@@ -22,7 +22,7 @@
     	<a class="waves-effect waves-light btn" href="{{action('SongsController@add',$playlist->id)}}" ><i class="material-icons left">playlist_add</i>Add Songs</a>
     </div>
     @endif
-    <div class="col s2 m2 l2 fb-share-button" data-href="http://http://139.59.27.158/playlists/{{$playlist->id}}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
+    <div class="col s2 m2 l2 fb-share-button" data-href="http://http://139.59.27.158/playlists/2" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fplaylists%2F4&amp;src=sdkpreparse">Share</a></div>
 </div>
 
 @if (session('status'))
