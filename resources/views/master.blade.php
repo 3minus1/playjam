@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> @yield('title') </title>
 
-          <meta property="og:url"           content="http://139.59.27.158/playlists/1" />
+          <meta property="og:url"           content="http://139.59.27.158/playlists/2" />
           <meta property="og:type"          content="website" />
           <meta property="og:title"         content="PlayJam" />
           <meta property="og:description"   content="Create, curate, and share playlists!" />
