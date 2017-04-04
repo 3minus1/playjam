@@ -367,7 +367,7 @@ $(document).ready(function(){
 		function gaana()
 		{
 			var song_url = $('#url').val();
-			$.getJSON('http://localhost:3000/api/gaana?url='+song_url,function(data){
+			$.getJSON('http://139.59.64.234:3000/api/gaana?url='+song_url,function(data){
 
 				 if (typeof(data) != "undefined")
 				 {
@@ -404,7 +404,7 @@ $(document).ready(function(){
 		function saavn()
 		{
 			var song_url = $('#url').val();
-			$.getJSON('http://localhost:3000/api/saavn?url='+song_url,function(data){
+			$.getJSON('http://139.59.64.234:3000/api/saavn?url='+song_url,function(data){
 
 				 if (typeof(data) != "undefined")
 				 {
@@ -462,7 +462,7 @@ $(document).ready(function(){
 			
 
 			var song_url = $('#url').val();
-			$.getJSON('http://localhost:3000/api/yt?url='+song_url,function(data){
+			$.getJSON('http://139.59.64.234:3000/api/yt?url='+song_url,function(data){
 
 				 if (typeof(data) != "undefined")
 				 {
