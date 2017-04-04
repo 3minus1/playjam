@@ -7,7 +7,7 @@ The app is deployed on DigitalOcean at http://139.59.27.158
 
 PlayJam is a music aggregation website, which currently supports YouTube, Gaana, and Saavn.
 
-Song details are fetched by the API I made on NodeJs. It's called [ScrapeJam](https://github.com/3minus1/scrapejam). The song URL is passed as GET request parameter to respective end-points of the ScrapeJam API. Song details are received as JSON objects, which are then parsed and stored into the database. 
+Song details are fetched by the API I made on NodeJs. It's called [ScrapeJam](https://github.com/3minus1/scrapejam). The song URL is passed as a GET request parameter to respective end-points of the ScrapeJam API. Song details are received as JSON objects, which are then parsed and stored into the database. 
 
 Briefly, PlayJam has the following feature set:
 
