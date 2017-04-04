@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $table = 'Songs';
+    protected $table = 'songs';
 
     public function playlist()
     {
