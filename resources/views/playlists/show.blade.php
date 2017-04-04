@@ -1,4 +1,5 @@
 @extends('master')
+@section('js_src',"src=/js/player.js")
 @section('title',"Playlist")
 @section('url-content',"content=http://139.59.27.158/playlists/$playlist->id")
 @section('description',"content=$playlist->name-$playlist->description")

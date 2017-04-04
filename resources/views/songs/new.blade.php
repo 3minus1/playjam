@@ -1,4 +1,5 @@
 @extends('master')
+@section('js_src',"src=/js/fetch.js")
 @section('title','Add Song to Playlist')
 @section('content')
 

@@ -1,4 +1,5 @@
 @extends('master')
+@section('js_src',"src=/js/chips.js")
 @section('title','Create Playlist')
 @section('content')
 <div class="page-header row">

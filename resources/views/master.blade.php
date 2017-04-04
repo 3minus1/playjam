@@ -26,8 +26,7 @@
         <!-- Compiled and minified JavaScript -->
         <script src="https://apis.google.com/js/api.js"></script>
 
-         <script type="text/JavaScript" src="/js/index.js"></script> 
-         <script type="text/JavaScript" src="/js/youtube.js"></script> 
+         <script type="text/JavaScript" @yield('js_src')></script> 
          <script type="text/JavaScript" src="/js/materialize-tags.min.js"></script> 
               
 
