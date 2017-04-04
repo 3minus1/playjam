@@ -24,7 +24,7 @@ Briefly, PlayJam has the following feature set:
 * Material UI
 * Ability to figure out/scrape song metadata and display on the fronted
 * Ability to shuffle the songs in a playlist
-* Manual Autoplay, i.e. after a YouTube video gets over, the next item in the playlist starts playing automatically
+* Automatic song change, i.e. after a YouTube video gets over, the next item in the playlist starts playing automatically
 * Player Controls to skip to next song, go back to previous song, pause or play song.
 * Ability to view all the playlists which has a specific tag
 * Ability to view all the playlists created by a specific user
@@ -42,6 +42,7 @@ Briefly, PlayJam has the following feature set:
 * Materialize CSS
 * Jquery and Javascript
 * MySQL
+* NodeJS
 * Digital Ocean VPS
 * Version Control - Git
 
