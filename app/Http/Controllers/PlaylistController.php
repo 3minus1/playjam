@@ -13,12 +13,12 @@ use Auth;
 
 class PlaylistController extends Controller
 {
-
-    public function home()
+    public function __construct()
     {
-        $playlists = Playlist::all();
-        return view('home',['playlists'=>$playlists]);
+        $this->middleware('auth');
     }
+
+   
 
 	public function index()
 	{

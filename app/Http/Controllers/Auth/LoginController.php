@@ -27,6 +27,13 @@ class LoginController extends Controller
      *
      * @return Response
      */
+
+      public function home()
+    {
+        $playlists = Playlist::all();
+        return view('home',['playlists'=>$playlists]);
+    }
+       
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
