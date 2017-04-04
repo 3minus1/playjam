@@ -9,10 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> @yield('title') </title>
 
-          <meta property="og:url"           content="http://139.59.27.158/playlists/2" />
+          <meta property="og:url"           @yield('url-content') />
           <meta property="og:type"          content="website" />
           <meta property="og:title"         content="PlayJam - Create, curate, and share playlists!" />
-          <meta property="og:description"   content="Check out this playlist!" />
+          <meta property="og:description"   @yield('description') />
           <meta property="og:image"         content="https://maxcdn.icons8.com/Color/PNG/512/Music/playlist-512.png" />
        
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
