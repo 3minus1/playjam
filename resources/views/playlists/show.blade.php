@@ -1,7 +1,7 @@
 @extends('master')
 @section('title',"Playlist")
 @section('url-content',"content=http://139.59.27.158/playlists/$playlist->id")
-@section('description',"content=$playlist->name: $playlist->description")
+@section('description',"content=$playlist->name-$playlist->description")
 @section('content')
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -25,7 +25,7 @@
     </div>
     @endif
   
-    <div class="col s2 m2 l2 fb-share-button" data-href="http://139.59.27.158/playlists/2" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F139.59.27.158%2Fplaylists%2F2&amp;src=sdkpreparse">Share</a></div>
+    <div class="col s2 m2 l2 fb-share-button" data-href="http://139.59.27.158/playlists/{{$playlist->id}}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F139.59.27.158%2Fplaylists%{{$playlist->id}}F2&amp;src=sdkpreparse">Share</a></div>
 
 </div>
 
