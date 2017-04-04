@@ -14,6 +14,8 @@
           <meta property="og:title"         content="PlayJam" />
           <meta property="og:description"   content="Create, curate, and share playlists!" />
           <meta property="og:image"         content="https://139.59.27.158/logo/yt.png" />
+          <meta property="og:image:height"  content="500" />
+          <meta property="og:image:width"   content="600" />
        
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
