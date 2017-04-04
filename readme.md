@@ -1,3 +1,4 @@
+# PlayJam
 _This is an internship assignment given by Furlenco_
 
 The app is built on Laravel 5.4
