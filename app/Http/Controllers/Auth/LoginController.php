@@ -30,7 +30,7 @@ class LoginController extends Controller
 
       public function home()
     {
-        $playlists = Playlist::all();
+        $playlists = Playlist::orderBy('created_at','desc')->get();
         return view('home',['playlists'=>$playlists]);
     }
        

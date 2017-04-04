@@ -33,7 +33,7 @@
     </head>
 
     <body>
-
+        
 
 
        @include('shared.navbar')

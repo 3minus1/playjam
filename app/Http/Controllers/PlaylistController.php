@@ -22,7 +22,7 @@ class PlaylistController extends Controller
 
 	public function index()
 	{
-		$playlists = Playlist::where('user_id',Auth::user()->id)->get();
+		$playlists = Playlist::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
 
 		return view('playlists.index',['playlists' => $playlists] );
 	}
@@ -70,7 +70,7 @@ class PlaylistController extends Controller
     public function show($id)
     {
     	$playlist = Playlist::find($id);
-    	$songs = $playlist->songs()->get();
+    	$songs = $playlist->songs()->orderBy('created_at','desc')->get();
         $tags = $playlist->tags()->get();
         $i=1;
     	return view('playlists.show',['playlist'=>$playlist , 'songs'=>$songs, 'i'=>$i, 'tags'=>$tags] );
