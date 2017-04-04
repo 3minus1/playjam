@@ -136,7 +136,7 @@ img{
 }
 
 .collection{
-	padding-top: 1%;
+	margin-top: 1%;
 	max-height: 500px;
 	overflow: auto;
 }
